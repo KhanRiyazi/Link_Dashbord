@@ -1,26 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkMind Pro - AI-Powered Link Management SaaS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkFlow Pro - AI-Powered Link Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ----------- RESET ----------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
+        /* ===== CSS VARIABLES ===== */
         :root {
             --primary: #6C63FF;
             --primary-dark: #5a52d4;
@@ -39,6 +26,14 @@
             --gradient: linear-gradient(135deg, var(--primary), var(--accent));
         }
 
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             color: var(--dark);
@@ -46,33 +41,42 @@
             line-height: 1.6;
         }
 
-        /* ----------- NAVBAR ----------- */
+        /* ===== LAYOUT COMPONENTS ===== */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .page-section {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* ===== NAVIGATION ===== */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 8%;
+            padding: 18px 5%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
-            z-index: 99;
+            z-index: 100;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .nav-brand i {
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        nav h1 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -100,7 +104,7 @@
             gap: 15px;
         }
 
-        .nav-btn {
+        .btn {
             padding: 10px 18px;
             border: none;
             border-radius: 8px;
@@ -112,28 +116,28 @@
             gap: 8px;
         }
 
-        .nav-btn.secondary {
-            background: transparent;
-            color: var(--dark);
-        }
-
-        .nav-btn.secondary:hover {
-            color: var(--primary);
-        }
-
-        .nav-btn.primary {
+        .btn-primary {
             background: var(--gradient);
             color: white;
             box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
         }
 
-        .nav-btn.primary:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
         }
 
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            color: var(--primary);
+        }
+
         .user-menu {
-            display: flex;
+            display: none;
             align-items: center;
             gap: 10px;
             cursor: pointer;
@@ -151,102 +155,10 @@
             font-weight: 600;
         }
 
-        /* ----------- AUTH PAGES ----------- */
-        .auth-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            padding: 40px 8%;
-        }
-
-        .auth-card {
-            background: white;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            width: 100%;
-            max-width: 450px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .auth-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .auth-header h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-
-        .auth-header p {
-            color: var(--gray);
-        }
-
-        .auth-form .input-group {
-            margin-bottom: 20px;
-        }
-
-        .auth-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .auth-form input {
-            width: 100%;
-            padding: 14px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .auth-form input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
-        }
-
-        .auth-btn {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            background: var(--gradient);
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
-        }
-
-        .auth-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
-        }
-
-        .auth-footer {
-            text-align: center;
-            margin-top: 25px;
-            color: var(--gray);
-        }
-
-        .auth-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* ----------- HERO ----------- */
+        /* ===== HERO SECTION ===== */
         .hero {
             text-align: center;
-            padding: 110px 8% 70px;
+            padding: 120px 5% 80px;
             position: relative;
             overflow: hidden;
         }
@@ -262,16 +174,15 @@
             z-index: -1;
         }
 
-        .hero h2 {
+        .hero h1 {
             font-size: 3.2rem;
             font-weight: 700;
             color: var(--dark);
-            animation: fadeIn 1s ease;
             margin-bottom: 15px;
             line-height: 1.2;
         }
 
-        .hero h2 span {
+        .hero h1 span {
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -280,10 +191,8 @@
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
-            margin-inline: auto;
+            margin: 0 auto 30px;
             color: var(--gray);
-            animation: fadeIn 1.5s ease;
-            margin-bottom: 30px;
         }
 
         .hero-actions {
@@ -293,47 +202,12 @@
             margin-top: 30px;
         }
 
-        .btn {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn.primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
-        }
-
-        .btn.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
-        }
-
-        .btn.secondary {
-            background: white;
-            color: var(--dark);
-            box-shadow: var(--shadow);
-        }
-
-        .btn.secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
         .ai-features {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-top: 30px;
-            animation: fadeIn 2s ease;
+            margin-top: 40px;
         }
 
         .ai-tag {
@@ -353,21 +227,9 @@
             color: var(--primary);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ----------- FEATURES SECTION ----------- */
+        /* ===== FEATURES SECTION ===== */
         .features {
-            padding: 80px 8%;
+            padding: 80px 5%;
             background: white;
         }
 
@@ -435,9 +297,9 @@
             font-size: 0.95rem;
         }
 
-        /* ----------- PRICING SECTION ----------- */
+        /* ===== PRICING SECTION ===== */
         .pricing {
-            padding: 80px 8%;
+            padding: 80px 5%;
             background: #f8f9fa;
         }
 
@@ -557,10 +419,100 @@
             background: #e2e6ea;
         }
 
-        /* ----------- DASHBOARD ----------- */
+        /* ===== AUTHENTICATION PAGES ===== */
+        .auth-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding: 40px 5%;
+        }
+
+        .auth-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .auth-header p {
+            color: var(--gray);
+        }
+
+        .auth-form .input-group {
+            margin-bottom: 20px;
+        }
+
+        .auth-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .auth-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: var(--gradient);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--gray);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ===== DASHBOARD ===== */
         .dashboard {
-            display: none;
-            padding: 30px 8%;
+            padding: 30px 5%;
         }
 
         .dashboard-header {
@@ -620,46 +572,24 @@
             font-size: 0.9rem;
         }
 
-        /* ----------- CONTAINER ----------- */
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto 80px;
-        }
-
-        /* ----------- ADD LINK BOX ----------- */
-        #add-link-box {
+        /* ===== LINK MANAGEMENT ===== */
+        .link-management {
             background: white;
-            padding: 25px;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow);
+            padding: 25px;
             margin-bottom: 30px;
+        }
+
+        .add-link-box {
             display: none;
-            animation: slideDown 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
 
-        #add-link-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .add-link-box.active {
+            display: block;
         }
 
         .input-group {
@@ -673,7 +603,7 @@
             color: var(--dark);
         }
 
-        #add-link-box input {
+        .input-group input {
             width: 100%;
             padding: 14px;
             border-radius: 8px;
@@ -682,7 +612,7 @@
             font-size: 1rem;
         }
 
-        #add-link-box input:focus {
+        .input-group input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
@@ -693,37 +623,6 @@
             gap: 10px;
         }
 
-        #add-link-box button {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        #save-btn {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
-        }
-
-        #save-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
-        }
-
-        #cancel-btn {
-            background: #f1f3f9;
-            color: var(--gray);
-        }
-
-        #cancel-btn:hover {
-            background: #e2e6ea;
-        }
-
-        /* ----------- SEARCH & FILTER ----------- */
         .search-container {
             background: white;
             padding: 20px;
@@ -813,7 +712,11 @@
             display: block;
         }
 
-        /* ----------- EMPTY STATE ----------- */
+        /* ===== LINK CARDS ===== */
+        .links-container {
+            min-height: 200px;
+        }
+
         .empty-state {
             text-align: center;
             padding: 60px 20px;
@@ -832,7 +735,6 @@
             color: var(--dark);
         }
 
-        /* ----------- LINK CARDS ----------- */
         .link-card {
             background: white;
             padding: 20px;
@@ -845,7 +747,6 @@
             box-shadow: var(--shadow);
             border-left: 6px solid var(--primary);
             cursor: pointer;
-            animation: fadeIn 0.5s ease;
             position: relative;
             overflow: hidden;
         }
@@ -930,7 +831,7 @@
             color: var(--primary);
         }
 
-        /* ----------- AI SUGGESTIONS ----------- */
+        /* ===== AI SUGGESTIONS ===== */
         .ai-suggestions {
             background: white;
             padding: 20px;
@@ -938,6 +839,10 @@
             box-shadow: var(--shadow);
             margin-bottom: 25px;
             display: none;
+        }
+
+        .ai-suggestions.active {
+            display: block;
         }
 
         .ai-suggestions h3 {
@@ -972,39 +877,7 @@
             color: white;
         }
 
-        /* ----------- TOAST NOTIFICATION ----------- */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            background: var(--dark);
-            color: white;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast.success {
-            background: var(--success);
-        }
-
-        .toast.error {
-            background: var(--danger);
-        }
-
-        /* ----------- MODAL ----------- */
+        /* ===== MODALS & TOASTS ===== */
         .modal {
             display: none;
             position: fixed;
@@ -1016,7 +889,10 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
         }
 
         .modal-content {
@@ -1026,19 +902,6 @@
             box-shadow: var(--shadow);
             width: 90%;
             max-width: 500px;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .modal-header {
@@ -1095,11 +958,42 @@
             background: #e11565;
         }
 
-        /* ----------- FOOTER ----------- */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: var(--dark);
+            color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .toast.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        /* ===== FOOTER ===== */
         footer {
             background: var(--dark);
             color: white;
-            padding: 50px 8% 30px;
+            padding: 50px 5% 30px;
             text-align: center;
         }
 
@@ -1150,18 +1044,9 @@
             font-size: 0.9rem;
         }
 
-        /* ----------- PAGE SECTIONS ----------- */
-        .page-section {
-            display: none;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        /* ----------- RESPONSIVE ----------- */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
-            .hero h2 {
+            .hero h1 {
                 font-size: 2.2rem;
             }
 
@@ -1204,10 +1089,16 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
         }
 
         @media (max-width: 480px) {
-            .hero h2 {
+            .hero h1 {
                 font-size: 1.8rem;
             }
 
@@ -1217,10 +1108,6 @@
 
             nav {
                 padding: 15px 5%;
-            }
-
-            .container {
-                width: 95%;
             }
 
             .section-title h2 {
@@ -1233,14 +1120,12 @@
         }
     </style>
 </head>
-
 <body>
-
-    <!-- NAV -->
+    <!-- Navigation -->
     <nav>
         <div class="nav-brand">
             <i class="fas fa-brain"></i>
-            <h1>LinkMind Pro</h1>
+            <span>LinkFlow Pro</span>
         </div>
         <div class="nav-links">
             <a href="#" onclick="showSection('home')">Home</a>
@@ -1248,29 +1133,28 @@
             <a href="#" onclick="showSection('pricing')">Pricing</a>
         </div>
         <div class="nav-actions" id="nav-actions">
-            <button class="nav-btn secondary" onclick="showSection('login')">Log In</button>
-            <button class="nav-btn primary" onclick="showSection('signup')">Sign Up</button>
+            <button class="btn btn-secondary" onclick="showSection('login')">Log In</button>
+            <button class="btn btn-primary" onclick="showSection('signup')">Sign Up</button>
         </div>
-        <div class="user-menu" id="user-menu" style="display: none;">
+        <div class="user-menu" id="user-menu">
             <div class="user-avatar" id="user-avatar">U</div>
             <span id="user-name">User</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </nav>
 
-    <!-- HOME SECTION -->
+    <!-- Home Section -->
     <section id="home" class="page-section active">
-        <!-- HERO -->
         <div class="hero">
-            <h2>Organize Your Digital World with <span>AI-Powered Intelligence</span></h2>
-            <p>LinkMind Pro uses advanced AI to automatically categorize, tag, and suggest relevant links based on your
-                interests and browsing habits.</p>
-
+            <h1>Organize Your Digital World with <span>AI-Powered Intelligence</span></h1>
+            <p>LinkFlow Pro uses advanced AI to automatically categorize, tag, and suggest relevant links based on your interests and browsing habits.</p>
+            
             <div class="hero-actions">
-                <button class="btn primary" onclick="showSection('signup')">
+                <button class="btn btn-primary" onclick="showSection('signup')">
                     <i class="fas fa-rocket"></i>
                     Get Started Free
                 </button>
-                <button class="btn secondary" onclick="showSection('features')">
+                <button class="btn btn-secondary" onclick="showSection('features')">
                     <i class="fas fa-play-circle"></i>
                     Watch Demo
                 </button>
@@ -1296,7 +1180,6 @@
             </div>
         </div>
 
-        <!-- FEATURES -->
         <div class="features">
             <div class="section-title">
                 <h2>AI-Powered Features</h2>
@@ -1309,8 +1192,7 @@
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3>Smart Categorization</h3>
-                    <p>Our AI automatically categorizes your links based on content, saving you time and effort in
-                        organization.</p>
+                    <p>Our AI automatically categorizes your links based on content, saving you time and effort in organization.</p>
                 </div>
 
                 <div class="feature-card">
@@ -1332,12 +1214,12 @@
         </div>
     </section>
 
-    <!-- FEATURES SECTION -->
+    <!-- Features Section -->
     <section id="features" class="page-section">
         <div class="features" style="padding-top: 120px;">
             <div class="section-title">
                 <h2>Advanced Features</h2>
-                <p>Discover all the powerful tools that make LinkMind Pro the ultimate link management solution</p>
+                <p>Discover all the powerful tools that make LinkFlow Pro the ultimate link management solution</p>
             </div>
 
             <div class="features-grid">
@@ -1392,7 +1274,7 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
+    <!-- Pricing Section -->
     <section id="pricing" class="page-section">
         <div class="pricing" style="padding-top: 120px;">
             <div class="section-title">
@@ -1497,13 +1379,13 @@
         </div>
     </section>
 
-    <!-- LOGIN SECTION -->
+    <!-- Login Section -->
     <section id="login" class="page-section">
         <div class="auth-container">
             <div class="auth-card">
                 <div class="auth-header">
                     <h2>Welcome Back</h2>
-                    <p>Sign in to your LinkMind Pro account</p>
+                    <p>Sign in to your LinkFlow Pro account</p>
                 </div>
                 <form class="auth-form">
                     <div class="input-group">
@@ -1523,7 +1405,7 @@
         </div>
     </section>
 
-    <!-- SIGNUP SECTION -->
+    <!-- Signup Section -->
     <section id="signup" class="page-section">
         <div class="auth-container">
             <div class="auth-card">
@@ -1553,96 +1435,98 @@
         </div>
     </section>
 
-    <!-- DASHBOARD SECTION -->
+    <!-- Dashboard Section -->
     <section id="dashboard" class="page-section dashboard">
-        <div class="dashboard-header">
-            <div class="dashboard-title">
-                <h2>Your Dashboard</h2>
-                <p>Welcome back, <span id="dashboard-user-name">User</span>!</p>
-            </div>
-            <button class="btn primary" onclick="toggleAddBox()">
-                <i class="fas fa-plus"></i>
-                Add Link
-            </button>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-link"></i>
-                </div>
-                <div class="stat-value" id="total-links">0</div>
-                <div class="stat-label">Total Links</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-folder"></i>
-                </div>
-                <div class="stat-value" id="total-categories">0</div>
-                <div class="stat-label">Categories</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-calendar"></i>
-                </div>
-                <div class="stat-value" id="links-this-month">0</div>
-                <div class="stat-label">Added This Month</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-chart-pie"></i>
-                </div>
-                <div class="stat-value" id="most-used-category">-</div>
-                <div class="stat-label">Most Used Category</div>
-            </div>
-        </div>
-
         <div class="container">
-            <!-- Add Link Box -->
-            <div id="add-link-box">
-                <div class="input-group">
-                    <label for="title">Link Title</label>
-                    <input type="text" id="title" placeholder="Enter a descriptive title">
+            <div class="dashboard-header">
+                <div class="dashboard-title">
+                    <h2>Your Dashboard</h2>
+                    <p>Welcome back, <span id="dashboard-user-name">User</span>!</p>
                 </div>
-                <div class="input-group">
-                    <label for="url">URL</label>
-                    <input type="text" id="url" placeholder="https://example.com">
+                <button class="btn btn-primary" onclick="toggleAddLinkBox()">
+                    <i class="fas fa-plus"></i>
+                    Add Link
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="stat-value" id="total-links">0</div>
+                    <div class="stat-label">Total Links</div>
                 </div>
-                <div class="form-actions">
-                    <button id="cancel-btn" onclick="toggleAddBox()">Cancel</button>
-                    <button id="save-btn" onclick="saveLink()">Save Link</button>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <div class="stat-value" id="total-categories">0</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="stat-value" id="links-this-month">0</div>
+                    <div class="stat-label">Added This Month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="stat-value" id="most-used-category">-</div>
+                    <div class="stat-label">Most Used Category</div>
                 </div>
             </div>
 
-            <!-- AI Suggestions -->
-            <div id="ai-suggestions" class="ai-suggestions">
-                <h3><i class="fas fa-lightbulb"></i> AI Suggestions</h3>
-                <div class="suggestions-list" id="suggestions-list">
-                    <!-- AI suggestions will appear here -->
-                </div>
-            </div>
-
-            <!-- Search & Filter -->
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-input" placeholder="Search your links...">
-                </div>
-                <div class="filter-dropdown">
-                    <button class="filter-btn">
-                        <i class="fas fa-sort"></i>
-                        Sort By
-                    </button>
-                    <div class="dropdown-content">
-                        <button onclick="sortLinks('date-added')">Date Added</button>
-                        <button onclick="sortLinks('title')">Title</button>
-                        <button onclick="sortLinks('category')">Category</button>
+            <div class="link-management">
+                <!-- Add Link Box -->
+                <div id="add-link-box" class="add-link-box">
+                    <div class="input-group">
+                        <label for="title">Link Title</label>
+                        <input type="text" id="title" placeholder="Enter a descriptive title">
+                    </div>
+                    <div class="input-group">
+                        <label for="url">URL</label>
+                        <input type="text" id="url" placeholder="https://example.com">
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" onclick="toggleAddLinkBox()">Cancel</button>
+                        <button class="btn btn-primary" onclick="saveLink()">Save Link</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Links List -->
-            <div id="links"></div>
+                <!-- AI Suggestions -->
+                <div id="ai-suggestions" class="ai-suggestions">
+                    <h3><i class="fas fa-lightbulb"></i> AI Suggestions</h3>
+                    <div class="suggestions-list" id="suggestions-list">
+                        <!-- AI suggestions will appear here -->
+                    </div>
+                </div>
+
+                <!-- Search & Filter -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search your links...">
+                    </div>
+                    <div class="filter-dropdown">
+                        <button class="filter-btn">
+                            <i class="fas fa-sort"></i>
+                            Sort By
+                        </button>
+                        <div class="dropdown-content">
+                            <button onclick="sortLinks('date-added')">Date Added</button>
+                            <button onclick="sortLinks('title')">Title</button>
+                            <button onclick="sortLinks('category')">Category</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links List -->
+                <div class="links-container" id="links-container"></div>
+            </div>
         </div>
     </section>
 
@@ -1667,12 +1551,12 @@
         <span id="toast-message">Link saved successfully!</span>
     </div>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
                 <i class="fas fa-brain"></i>
-                <h2>LinkMind Pro</h2>
+                <h2>LinkFlow Pro</h2>
             </div>
             <p>Revolutionizing link management with artificial intelligence</p>
 
@@ -1685,60 +1569,64 @@
             </div>
 
             <div class="copyright">
-                &copy; 2023 LinkMind Pro. All rights reserved.
+                &copy; 2023 LinkFlow Pro. All rights reserved.
             </div>
         </div>
     </footer>
 
     <script>
-        // ---------- GLOBAL VARIABLES ----------
-        let linkList = JSON.parse(localStorage.getItem("links")) || [];
+        // ===== APPLICATION STATE =====
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        let linkList = JSON.parse(localStorage.getItem('links')) || [];
         let currentEditIndex = -1;
         let currentDeleteIndex = -1;
-        let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
-        // ---------- DOM ELEMENTS ----------
-        const addLinkBox = document.getElementById("add-link-box");
-        const linksContainer = document.getElementById("links");
-        const searchInput = document.getElementById("search-input");
-        const deleteModal = document.getElementById("delete-modal");
-        const confirmDeleteBtn = document.getElementById("confirm-delete");
-        const toast = document.getElementById("toast");
-        const toastMessage = document.getElementById("toast-message");
-        const aiSuggestions = document.getElementById("ai-suggestions");
-        const suggestionsList = document.getElementById("suggestions-list");
-        const navActions = document.getElementById("nav-actions");
-        const userMenu = document.getElementById("user-menu");
-        const userAvatar = document.getElementById("user-avatar");
-        const userName = document.getElementById("user-name");
-        const dashboardUserName = document.getElementById("dashboard-user-name");
+        // ===== DOM ELEMENTS =====
+        const navActions = document.getElementById('nav-actions');
+        const userMenu = document.getElementById('user-menu');
+        const userAvatar = document.getElementById('user-avatar');
+        const userName = document.getElementById('user-name');
+        const dashboardUserName = document.getElementById('dashboard-user-name');
+        const addLinkBox = document.getElementById('add-link-box');
+        const aiSuggestions = document.getElementById('ai-suggestions');
+        const suggestionsList = document.getElementById('suggestions-list');
+        const linksContainer = document.getElementById('links-container');
+        const searchInput = document.getElementById('search-input');
+        const deleteModal = document.getElementById('delete-modal');
+        const confirmDeleteBtn = document.getElementById('confirm-delete');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
 
-        // ---------- INITIALIZATION ----------
-        document.addEventListener('DOMContentLoaded', function () {
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
             // Check if user is logged in
             if (currentUser) {
                 showDashboard();
-            } else {
-                showSection('home');
             }
 
-            // Add event listener for search
+            // Set up event listeners
             searchInput.addEventListener('input', filterLinks);
+            confirmDeleteBtn.addEventListener('click', confirmDelete);
 
-            // Add event listener for Enter key in inputs
-            document.getElementById('title').addEventListener('keypress', function (e) {
+            // Enter key support for forms
+            document.getElementById('title')?.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') document.getElementById('url').focus();
             });
 
-            document.getElementById('url').addEventListener('keypress', function (e) {
+            document.getElementById('url')?.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') saveLink();
             });
 
-            // Confirm delete event
-            confirmDeleteBtn.addEventListener('click', confirmDelete);
+            document.getElementById('login-password')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') login();
+            });
+
+            document.getElementById('signup-password')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') signup();
+            });
         });
 
-        // ---------- PAGE NAVIGATION ----------
+        // ===== PAGE NAVIGATION =====
         function showSection(sectionId) {
             // Hide all sections
             document.querySelectorAll('.page-section').forEach(section => {
@@ -1766,33 +1654,34 @@
 
         function logout() {
             currentUser = null;
-            localStorage.removeItem("currentUser");
+            localStorage.removeItem('currentUser');
             navActions.style.display = 'flex';
             userMenu.style.display = 'none';
             showSection('home');
+            showToast('Logged out successfully', 'success');
         }
 
-        // ---------- AUTHENTICATION ----------
+        // ===== AUTHENTICATION =====
         function login() {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
 
             if (!email || !password) {
-                showToast("Please fill in all fields", "error");
+                showToast('Please fill in all fields', 'error');
                 return;
             }
 
             // In a real app, this would be an API call
-            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const users = JSON.parse(localStorage.getItem('users')) || [];
             const user = users.find(u => u.email === email && u.password === password);
 
             if (user) {
                 currentUser = user;
-                localStorage.setItem("currentUser", JSON.stringify(user));
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 showDashboard();
-                showToast("Welcome back!", "success");
+                showToast('Welcome back!', 'success');
             } else {
-                showToast("Invalid email or password", "error");
+                showToast('Invalid email or password', 'error');
             }
         }
 
@@ -1802,16 +1691,16 @@
             const password = document.getElementById('signup-password').value;
 
             if (!name || !email || !password) {
-                showToast("Please fill in all fields", "error");
+                showToast('Please fill in all fields', 'error');
                 return;
             }
 
             // In a real app, this would be an API call
-            const users = JSON.parse(localStorage.getItem("users")) || [];
-
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
             // Check if user already exists
             if (users.find(u => u.email === email)) {
-                showToast("User with this email already exists", "error");
+                showToast('User with this email already exists', 'error');
                 return;
             }
 
@@ -1826,23 +1715,23 @@
             };
 
             users.push(newUser);
-            localStorage.setItem("users", JSON.stringify(users));
-
+            localStorage.setItem('users', JSON.stringify(users));
+            
             currentUser = newUser;
-            localStorage.setItem("currentUser", JSON.stringify(newUser));
-
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
             showDashboard();
-            showToast("Account created successfully!", "success");
+            showToast('Account created successfully!', 'success');
         }
 
-        // ---------- DASHBOARD STATS ----------
+        // ===== DASHBOARD STATS =====
         function updateDashboardStats() {
             document.getElementById('total-links').textContent = linkList.length;
-
+            
             // Calculate categories
             const categories = [...new Set(linkList.map(link => link.category))];
             document.getElementById('total-categories').textContent = categories.length;
-
+            
             // Calculate links added this month
             const currentMonth = new Date().getMonth();
             const currentYear = new Date().getFullYear();
@@ -1851,52 +1740,50 @@
                 return linkDate.getMonth() === currentMonth && linkDate.getFullYear() === currentYear;
             });
             document.getElementById('links-this-month').textContent = linksThisMonth.length;
-
+            
             // Calculate most used category
             if (categories.length > 0) {
                 const categoryCounts = {};
                 linkList.forEach(link => {
                     categoryCounts[link.category] = (categoryCounts[link.category] || 0) + 1;
                 });
-
+                
                 let mostUsedCategory = '';
                 let maxCount = 0;
-
+                
                 for (const category in categoryCounts) {
                     if (categoryCounts[category] > maxCount) {
                         mostUsedCategory = category;
                         maxCount = categoryCounts[category];
                     }
                 }
-
+                
                 document.getElementById('most-used-category').textContent = mostUsedCategory;
             }
         }
 
-        // ---------- SHOW/HIDE ADD LINK BOX ----------
-        function toggleAddBox() {
-            if (addLinkBox.style.display === "block") {
-                addLinkBox.style.display = "none";
+        // ===== LINK MANAGEMENT =====
+        function toggleAddLinkBox() {
+            if (addLinkBox.classList.contains('active')) {
+                addLinkBox.classList.remove('active');
+                aiSuggestions.classList.remove('active');
                 resetForm();
-                aiSuggestions.style.display = "none";
             } else {
-                addLinkBox.style.display = "block";
-                document.getElementById("title").focus();
-                aiSuggestions.style.display = "block";
+                addLinkBox.classList.add('active');
+                aiSuggestions.classList.add('active');
+                document.getElementById('title').focus();
                 generateAISuggestions();
             }
         }
 
-        // ---------- RESET FORM ----------
         function resetForm() {
-            document.getElementById("title").value = "";
-            document.getElementById("url").value = "";
+            document.getElementById('title').value = '';
+            document.getElementById('url').value = '';
             currentEditIndex = -1;
         }
 
-        // ---------- RENDER LINKS ----------
         function renderLinks(links = linkList) {
-            linksContainer.innerHTML = "";
+            linksContainer.innerHTML = '';
 
             if (links.length === 0) {
                 linksContainer.innerHTML = `
@@ -1910,8 +1797,8 @@
             }
 
             links.forEach((item, index) => {
-                const card = document.createElement("div");
-                card.className = "link-card";
+                const card = document.createElement('div');
+                card.className = 'link-card';
                 card.innerHTML = `
                     <div class="link-content" onclick="openLink('${item.url}')">
                         <h3>${item.title}</h3>
@@ -1931,24 +1818,22 @@
             });
         }
 
-        // ---------- OPEN LINK ----------
         function openLink(url) {
             window.open(url, '_blank');
         }
 
-        // ---------- SAVE LINK ----------
         function saveLink() {
-            const title = document.getElementById("title").value.trim();
-            const url = document.getElementById("url").value.trim();
+            const title = document.getElementById('title').value.trim();
+            const url = document.getElementById('url').value.trim();
 
             if (!title || !url) {
-                showToast("Please fill both fields!", "error");
+                showToast('Please fill both fields!', 'error');
                 return;
             }
 
             // Validate URL format
             if (!isValidUrl(url)) {
-                showToast("Please enter a valid URL (include http:// or https://)", "error");
+                showToast('Please enter a valid URL (include http:// or https://)', 'error');
                 return;
             }
 
@@ -1965,54 +1850,51 @@
             if (currentEditIndex === -1) {
                 // Add new link
                 linkList.push(linkData);
-                showToast("Link added successfully!");
+                showToast('Link added successfully!');
             } else {
                 // Update existing link
                 linkList[currentEditIndex] = linkData;
-                showToast("Link updated successfully!");
+                showToast('Link updated successfully!');
             }
 
-            localStorage.setItem("links", JSON.stringify(linkList));
+            localStorage.setItem('links', JSON.stringify(linkList));
             renderLinks();
             resetForm();
-            toggleAddBox();
+            toggleAddLinkBox();
             updateDashboardStats();
         }
 
-        // ---------- EDIT LINK ----------
         function editLink(index) {
             const link = linkList[index];
-            document.getElementById("title").value = link.title;
-            document.getElementById("url").value = link.url;
+            document.getElementById('title').value = link.title;
+            document.getElementById('url').value = link.url;
             currentEditIndex = index;
-            addLinkBox.style.display = "block";
-            document.getElementById("title").focus();
-            aiSuggestions.style.display = "none";
+            addLinkBox.classList.add('active');
+            document.getElementById('title').focus();
+            aiSuggestions.classList.remove('active');
         }
 
-        // ---------- DELETE LINK ----------
         function showDeleteModal(index) {
             currentDeleteIndex = index;
-            deleteModal.style.display = "flex";
+            deleteModal.classList.add('active');
         }
 
         function closeModal() {
-            deleteModal.style.display = "none";
+            deleteModal.classList.remove('active');
             currentDeleteIndex = -1;
         }
 
         function confirmDelete() {
             if (currentDeleteIndex !== -1) {
                 linkList.splice(currentDeleteIndex, 1);
-                localStorage.setItem("links", JSON.stringify(linkList));
+                localStorage.setItem('links', JSON.stringify(linkList));
                 renderLinks();
-                showToast("Link deleted successfully!");
+                showToast('Link deleted successfully!');
                 closeModal();
                 updateDashboardStats();
             }
         }
 
-        // ---------- SEARCH & FILTER ----------
         function filterLinks() {
             const searchTerm = searchInput.value.toLowerCase();
             const filteredLinks = linkList.filter(link =>
@@ -2023,7 +1905,6 @@
             renderLinks(filteredLinks);
         }
 
-        // ---------- SORT LINKS ----------
         function sortLinks(criteria) {
             const sortedLinks = [...linkList];
 
@@ -2043,7 +1924,7 @@
             showToast(`Sorted by ${criteria.replace('-', ' ')}`);
         }
 
-        // ---------- AI FUNCTIONS ----------
+        // ===== AI FUNCTIONS =====
         function generateAICategory(title, url) {
             // Simple AI simulation for categorization
             const techKeywords = ['github', 'stackoverflow', 'developer', 'programming', 'code', 'api', 'javascript', 'python', 'react', 'vue'];
@@ -2106,7 +1987,7 @@
             });
         }
 
-        // ---------- UTILITY FUNCTIONS ----------
+        // ===== UTILITY FUNCTIONS =====
         function isValidUrl(string) {
             try {
                 new URL(string);
@@ -2123,19 +2004,16 @@
             return url;
         }
 
-        // ---------- TOAST NOTIFICATION ----------
-        function showToast(message, type = "success") {
+        function showToast(message, type = 'success') {
             toastMessage.textContent = message;
-            toast.className = "toast";
+            toast.className = 'toast';
             toast.classList.add(type);
-            toast.classList.add("show");
+            toast.classList.add('active');
 
             setTimeout(() => {
-                toast.classList.remove("show");
+                toast.classList.remove('active');
             }, 3000);
         }
     </script>
-
 </body>
-
 </html>
