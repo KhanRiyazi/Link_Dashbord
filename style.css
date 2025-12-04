@@ -1,0 +1,319 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #f8f8f8;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+/* --- URGENCY BAR (High-Contrast Scarcity) --- */
+#urgency-bar {
+    background-color: #ff3b3f;
+    /* Alert Red */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 1.1em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- 1. Hero Section: Power & Clarity --- */
+.hero-section {
+    background: linear-gradient(225deg, #1e3c72 0%, #2a5298 100%);
+    /* Deep Blue Gradient */
+    color: white;
+    padding: 100px 0 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-pre-headline {
+    display: block;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #B0C4DE;
+    /* Lighter blue for contrast */
+    margin-bottom: 15px;
+}
+
+.hero-section h1 {
+    font-size: 3.8em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section .subtitle {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+}
+
+/* --- Live Counter Styling (Bandwagon Effect) --- */
+.live-counter-box {
+    color: #ffcc00;
+    /* Gold/Yellow for visibility */
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    border-radius: 5px;
+    animation: pulse 2s infinite;
+    /* Drawing attention to the count */
+}
+
+.dot-live {
+    height: 10px;
+    width: 10px;
+    background-color: #4CAF50;
+    /* Green for "Live" */
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+#live-visitors {
+    font-weight: 900;
+    margin: 0 5px;
+}
+
+/* CTA Buttons: Focused and Punchy */
+.cta-button {
+    display: inline-block;
+    padding: 18px 40px;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 50px;
+    /* Pill shape for modern look */
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.primary-cta {
+    background-color: #ffcc00;
+    /* High-contrast Gold/Yellow */
+    color: #1a1a1a;
+    font-size: 1.3em;
+    box-shadow: 0 6px 15px rgba(255, 204, 0, 0.4);
+}
+
+.primary-cta:hover {
+    background-color: #ffdf60;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6);
+}
+
+.secondary-cta {
+    background-color: #1e3c72;
+    color: white;
+    border: 2px solid white;
+}
+
+/* --- 2. Dynamic Social Proof --- */
+.trust-bar {
+    background-color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+#testimonial-rotator p {
+    font-style: italic;
+    font-size: 1.1em;
+    color: #555;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* --- 3. Feature Cards --- */
+.features-section {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.section-tag {
+    display: block;
+    text-transform: uppercase;
+    color: #777;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.features-section h2 {
+    margin-bottom: 50px;
+    font-size: 2.5em;
+    font-weight: 800;
+}
+
+.feature-card {
+    display: inline-block;
+    width: 31%;
+    margin: 1%;
+    padding: 30px 20px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Smooth interaction */
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 2.5em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+/* --- 4. Conversion Anchor --- */
+.conversion-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #e6f3f7;
+}
+
+.conversion-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+
+.highlight {
+    color: #ff3b3f;
+}
+
+/* --- 5. Lead Capture Form (Conversion Area) --- */
+.cta-form-section {
+    background-color: white;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 5px solid #ffcc00;
+    /* Yellow accent line */
+}
+
+#landing-page-form input[type="email"] {
+    padding: 18px;
+    width: 45%;
+    max-width: 450px;
+    margin-right: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: border-color 0.3s;
+}
+
+#landing-page-form input[type="email"]:focus {
+    border-color: #1e3c72;
+    outline: none;
+}
+
+.button-form {
+    width: 30%;
+    max-width: 300px;
+}
+
+.legal-text {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Keyframe Animations */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.03);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .feature-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #landing-page-form input[type="email"],
+    .button-form {
+        width: 90%;
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    .cta-button {
+        width: 90%;
+    }
+
+    #urgency-bar {
+        font-size: 0.9em;
+    }
+}

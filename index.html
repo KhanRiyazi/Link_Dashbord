@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkFlow Pro - AI-Powered Link Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== CSS VARIABLES ===== */
         :root {
@@ -1120,6 +1122,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -1147,17 +1150,21 @@
     <section id="home" class="page-section active">
         <div class="hero">
             <h1>Organize Your Digital World with <span>AI-Powered Intelligence</span></h1>
-            <p>LinkFlow Pro uses advanced AI to automatically categorize, tag, and suggest relevant links based on your interests and browsing habits.</p>
-            
+            <p>LinkFlow Pro uses advanced AI to automatically categorize, tag, and suggest relevant links based on your
+                interests and browsing habits.</p>
+
             <div class="hero-actions">
                 <button class="btn btn-primary" onclick="showSection('signup')">
                     <i class="fas fa-rocket"></i>
                     Get Started Free
                 </button>
-                <button class="btn btn-secondary" onclick="showSection('features')">
-                    <i class="fas fa-play-circle"></i>
-                    Watch Demo
-                </button>
+                <a href="main.html" style="text-decoration:none;">
+                    <button class="btn btn-secondary" onclick="showSection('features')">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Demo
+                    </button>
+                </a>
+
             </div>
 
             <div class="ai-features">
@@ -1192,7 +1199,8 @@
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3>Smart Categorization</h3>
-                    <p>Our AI automatically categorizes your links based on content, saving you time and effort in organization.</p>
+                    <p>Our AI automatically categorizes your links based on content, saving you time and effort in
+                        organization.</p>
                 </div>
 
                 <div class="feature-card">
@@ -1598,7 +1606,7 @@
         const toastMessage = document.getElementById('toast-message');
 
         // ===== INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Check if user is logged in
             if (currentUser) {
                 showDashboard();
@@ -1609,19 +1617,19 @@
             confirmDeleteBtn.addEventListener('click', confirmDelete);
 
             // Enter key support for forms
-            document.getElementById('title')?.addEventListener('keypress', function(e) {
+            document.getElementById('title')?.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') document.getElementById('url').focus();
             });
 
-            document.getElementById('url')?.addEventListener('keypress', function(e) {
+            document.getElementById('url')?.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') saveLink();
             });
 
-            document.getElementById('login-password')?.addEventListener('keypress', function(e) {
+            document.getElementById('login-password')?.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') login();
             });
 
-            document.getElementById('signup-password')?.addEventListener('keypress', function(e) {
+            document.getElementById('signup-password')?.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') signup();
             });
         });
@@ -1697,7 +1705,7 @@
 
             // In a real app, this would be an API call
             const users = JSON.parse(localStorage.getItem('users')) || [];
-            
+
             // Check if user already exists
             if (users.find(u => u.email === email)) {
                 showToast('User with this email already exists', 'error');
@@ -1716,10 +1724,10 @@
 
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
-            
+
             currentUser = newUser;
             localStorage.setItem('currentUser', JSON.stringify(newUser));
-            
+
             showDashboard();
             showToast('Account created successfully!', 'success');
         }
@@ -1727,11 +1735,11 @@
         // ===== DASHBOARD STATS =====
         function updateDashboardStats() {
             document.getElementById('total-links').textContent = linkList.length;
-            
+
             // Calculate categories
             const categories = [...new Set(linkList.map(link => link.category))];
             document.getElementById('total-categories').textContent = categories.length;
-            
+
             // Calculate links added this month
             const currentMonth = new Date().getMonth();
             const currentYear = new Date().getFullYear();
@@ -1740,24 +1748,24 @@
                 return linkDate.getMonth() === currentMonth && linkDate.getFullYear() === currentYear;
             });
             document.getElementById('links-this-month').textContent = linksThisMonth.length;
-            
+
             // Calculate most used category
             if (categories.length > 0) {
                 const categoryCounts = {};
                 linkList.forEach(link => {
                     categoryCounts[link.category] = (categoryCounts[link.category] || 0) + 1;
                 });
-                
+
                 let mostUsedCategory = '';
                 let maxCount = 0;
-                
+
                 for (const category in categoryCounts) {
                     if (categoryCounts[category] > maxCount) {
                         mostUsedCategory = category;
                         maxCount = categoryCounts[category];
                     }
                 }
-                
+
                 document.getElementById('most-used-category').textContent = mostUsedCategory;
             }
         }
@@ -2016,4 +2024,5 @@
         }
     </script>
 </body>
+
 </html>
